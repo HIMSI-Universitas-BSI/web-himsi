@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 12)->primary();
             $table->string('name', 64)->nullable();
             $table->string('username', 48)->uniqid();
             $table->string('image')->default('user.png');

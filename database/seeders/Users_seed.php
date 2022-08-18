@@ -18,6 +18,7 @@ class Users_seed extends Seeder
     {
         $users = [
             [
+                'id' => 'UID-22880001',
                 'name' => 'admin oprec',
                 'username' => 'superadmin',
                 'positions_id' => 1,
@@ -25,6 +26,7 @@ class Users_seed extends Seeder
                 'password' => Hash::make('#19200616'),
             ],
             [
+                'id' => 'UID-22880002',
                 'name' => 'panitia oprec',
                 'username' => 'panitia',
                 'positions_id' => 2,
