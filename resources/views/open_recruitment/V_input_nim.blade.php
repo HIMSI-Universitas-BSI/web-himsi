@@ -7,8 +7,8 @@
 @section('nav-right-content')
     <h5 class="text-uppercase">HIMSI {{ $campus }}</h5>
 @endsection
-<div class="container d-flex align-items-center justify-content-center" style="height: 90vh;">
-    <div class="card shadow" style="width: 80%">
+<div class="container d-flex align-items-center justify-content-center" style="height: 70vh;">
+    <div class="card shadow" style="width: 90%">
         <div class="card-header judul-halaman">
             <div class="text-center my-3">
                 <h4>MASUKAN NIM KALIAN</h4>
