@@ -18,11 +18,13 @@
                 <div class="row row-cols-2 justify-content-center">
                     @foreach ($campuses as $c)
                         <div class="col my-2" style="width: 160px">
-                            <div class="card text-center"
-                                onclick="window.location.href = '/oprec/choose-campus/{{ $c->name }}'">
-                                <img src="<?= asset('img/campuses/' . $c->image) ?>" alt="">
-                                <div class="card-body p-2">
-                                    <h6>{{ $c->name }}</h6>
+                            <div id="campus">
+                                <div class="card text-center"
+                                    onclick="window.location.href = '/oprec/choose-campus/{{ $c->name }}'">
+                                    <img src="<?= asset('img/campuses/' . $c->image) ?>" alt="">
+                                    <div class="card-body p-2">
+                                        <h6>{{ $c->name }}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>

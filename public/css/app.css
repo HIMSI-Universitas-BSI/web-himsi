@@ -72,8 +72,44 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.list-kampus .card:hover {
+.list-kampus #campus:hover {
   transform: scale(1.04);
+}
+
+#campus {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+#campus .card {
+  position: relative;
+  z-index: 10;
+  margin: 2px;
+}
+#campus::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 160%;
+  background: linear-gradient(#00ccff, #d400d4);
+  animation: animate 4s linear infinite;
+}
+#campus::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #0e1538;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
