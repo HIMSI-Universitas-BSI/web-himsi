@@ -98,8 +98,8 @@
                 <div class="card-body">
                     <div class="col-md-6">
                         <label for="campus" class="form-label">Asal Kampus</label>
-                        <input type="text" class="form-control @error('campus') is-invalid @enderror" id="campus"
-                            disabled readonly value="{{ old('campus', $campus) }}">
+                        <input type="text" class="form-control @error('campus') is-invalid @enderror" disabled readonly
+                            value="{{ old('campus', $campus) }}">
                         @error('campus')
                             <div class="invalid-feedback">
                                 {{ $message }}
