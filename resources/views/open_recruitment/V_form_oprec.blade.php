@@ -10,6 +10,7 @@
 <div class="container">
     <div class="card shadow">
         <div class="card-header judul-halaman">
+            @include('partials.alert')
             <div class="text-center my-3">
                 <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $campus }}</h4>
             </div>
@@ -48,8 +49,10 @@
         </div>
     </div>
 
-    <form action="/oprec/register" method="post">
+    <form action="/oprec" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="campus" value="{{ old('campus', $campus) }}">
+        <input type="hidden" name="NIM" value="{{ old('NIM', $NIM) }}">
         <div class="card my-3">
             <div class="card-body">
                 <div class="col-md-6">
@@ -82,8 +85,8 @@
             <div class="card-body">
                 <div class="col-md-6">
                     <label for="NIM" class="form-label">NIM</label>
-                    <input type="text" class="form-control @error('NIM') is-invalid @enderror" name="NIM"
-                        id="NIM" readonly disabled value="{{ old('NIM', $NIM) }}">
+                    <input type="text" class="form-control @error('NIM') is-invalid @enderror" id="NIM"
+                        readonly disabled value="{{ old('NIM', $NIM) }}">
                     @error('NIM')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -96,8 +99,8 @@
             <div class="card-body">
                 <div class="col-md-6">
                     <label for="campus" class="form-label">Asal Kampus</label>
-                    <input type="text" class="form-control @error('campus') is-invalid @enderror" name="campus"
-                        id="campus" disabled readonly value="{{ old('campus', $campus) }}">
+                    <input type="text" class="form-control @error('campus') is-invalid @enderror" id="campus"
+                        disabled readonly value="{{ old('campus', $campus) }}">
                     @error('campus')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -153,6 +156,9 @@
             <div class="card-body">
                 <div class="col-md-6">
                     <label for="cv" class="form-label">Upload Curriculum Vitae (CV)</label>
+                    <p class="mb-1">Jika belum punya cv silahkan download template di sini <a
+                            href="#">download</a></p>
+                    <p class="mb-2 text-danger">Wajib PDF</p>
                     <input type="file" accept=".pdf" class="form-control @error('cv') is-invalid @enderror"
                         name="cv" id="cv" required value="{{ old('cv') }}">
                     @error('cv')

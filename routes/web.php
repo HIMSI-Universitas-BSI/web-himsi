@@ -22,8 +22,9 @@ Route::group(['prefix' => 'oprec'], function () {
     Route::get('/', [C_openRecruitment::class, 'index']);
     Route::get('/choose-campus', [C_openRecruitment::class, 'chooseCampus']);
     Route::get('/choose-campus/{campus}', [C_openRecruitment::class, 'inputNIM']);
-    Route::post('/', [C_openRecruitment::class, 'create']);
-    Route::post('/register', [C_openRecruitment::class, 'store']);
+    Route::post('/input-nim', [C_openRecruitment::class, 'create']);
+    Route::get('/form/{campus}/{NIM}', [C_openRecruitment::class, 'form']);
+    Route::post('/', [C_openRecruitment::class, 'store']);
     Route::get('/done', [C_openRecruitment::class, 'done']);
 });
 
