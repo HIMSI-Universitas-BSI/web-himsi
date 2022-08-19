@@ -1,10 +1,9 @@
-@extends('layouts.main')
-
-@section('title', 'Pengenalan HIMSI')
-
-@section('content')
+<x-guest-layout title="Choose Campuses">
     @component('components.navbar')
-        <h5>KAMPUS BSI</h5>
+        <div class="mx-auto py-2">
+            <h5>KAMPUS</h5>
+        </div>
+        <img src="<?= asset('img/logo/bsi.png') ?>" class="logo-navbar">
     @endcomponent
     <div class="container">
         <div class="card">
@@ -33,4 +32,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-guest-layout>

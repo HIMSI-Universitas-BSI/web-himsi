@@ -1,10 +1,8 @@
-@extends('layouts.main')
-
-@section('title', 'Pengenalan HIMSI')
-
-@section('content')
+<x-guest-layout title="Formulir Open Recruitment">
     @component('components.navbar')
-        <h5>FORMULIR PENDAFTARAN</h5>
+        <div class="mx-auto py-2">
+            <h5>FORMULIR PENDAFTARAN</h5>
+        </div>
     @endcomponent
     <div class="container">
         <div class="card shadow">
@@ -15,7 +13,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <p>HIMSI atau Himpunan Mahasiswa Sistem Informasi adalah salah satu Organisasi Mahasiswa di Universitas Bina
+                <p>HIMSI atau Himpunan Mahasiswa Sistem Informasi adalah salah satu Organisasi Mahasiswa di Universitas
+                    Bina
                     Sarana Informatika. HIMSI tersebar di beberapa KAMPUS UTAMA dan KAMPUS PSDKU.
                     untuk lingkup KAMPUS UTAMA di wilayah JADETABEK (Jakarta, Depok, Tanggerang, Bekasi) yaitu :</p>
                 <p class="mt-2"><b>SEKTOR BARAT</b></p>
@@ -41,7 +40,8 @@
                     Karawang, Bogor, Pontianak, Tegal. </p>
                 <p class="mt-3">Teruntuk Mahasiswa/i yang mendaftarkan diri, Jika KAMPUS UTAMA anda tidak disebutkan di
                     atas, jangan
-                    berkecil hati tetap lanjutkan pendaftaran. Kami akan membantu teman-teman untuk mendirikannya di Kampus
+                    berkecil hati tetap lanjutkan pendaftaran. Kami akan membantu teman-teman untuk mendirikannya di
+                    Kampus
                     yang belum ada, dan membantu teman-teman Mahasiswa/i untuk mengembangkan potensi diri anda</p>
 
                 <p class="mt-2"><b>Selamat Mendaftar</b></p>
@@ -70,8 +70,9 @@
                 <div class="card-body">
                     <div class="col-md-6">
                         <label for="full_name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name"
-                            id="full_name" placeholder="Masukan nama lengkap" required value="{{ old('full_name') }}">
+                        <input type="text" class="form-control @error('full_name') is-invalid @enderror"
+                            name="full_name" id="full_name" placeholder="Masukan nama lengkap" required
+                            value="{{ old('full_name') }}">
                         @error('full_name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -98,8 +99,8 @@
                 <div class="card-body">
                     <div class="col-md-6">
                         <label for="campus" class="form-label">Asal Kampus</label>
-                        <input type="text" class="form-control @error('campus') is-invalid @enderror" disabled readonly
-                            value="{{ old('campus', $campus) }}">
+                        <input type="text" class="form-control @error('campus') is-invalid @enderror" disabled
+                            readonly value="{{ old('campus', $campus) }}">
                         @error('campus')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -112,8 +113,9 @@
                 <div class="card-body">
                     <div class="col-md-6">
                         <label for="semester" class="form-label">Semester</label>
-                        <input type="number" class="form-control @error('semester') is-invalid @enderror" name="semester"
-                            id="semester" placeholder="Masukan semester" required value="{{ old('semester') }}">
+                        <input type="number" class="form-control @error('semester') is-invalid @enderror"
+                            name="semester" id="semester" placeholder="Masukan semester" required
+                            value="{{ old('semester') }}">
                         @error('semester')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -126,8 +128,9 @@
                 <div class="card-body">
                     <div class="col-md-6">
                         <label for="whatsapp" class="form-label">No Whatsapp</label>
-                        <input type="number" class="form-control @error('whatsapp') is-invalid @enderror" name="whatsapp"
-                            id="whatsapp" placeholder="Masukan nomor whatsapp" required value="{{ old('whatsapp') }}">
+                        <input type="number" class="form-control @error('whatsapp') is-invalid @enderror"
+                            name="whatsapp" id="whatsapp" placeholder="Masukan nomor whatsapp" required
+                            value="{{ old('whatsapp') }}">
                         @error('whatsapp')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -141,8 +144,8 @@
                     <div class="col-md-6">
                         <label for="ektm" class="form-label">Upload Screenshoot E-KTM</label>
                         <input type="file" accept="image/png, image/jpeg, image/jpg"
-                            class="form-control @error('ektm') is-invalid @enderror" name="ektm" id="ektm" required
-                            value="{{ old('ektm') }}">
+                            class="form-control @error('ektm') is-invalid @enderror" name="ektm" id="ektm"
+                            required value="{{ old('ektm') }}">
                         @error('ektm')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -196,4 +199,4 @@
             height: 200
         });
     </script>
-@endsection
+</x-guest-layout>

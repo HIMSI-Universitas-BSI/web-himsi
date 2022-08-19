@@ -1,10 +1,12 @@
-@extends('layouts.main')
-
-@section('title', 'Pengenalan HIMSI')
-
-@section('content')
+<x-guest-layout title="Input NIM">
     @component('components.navbar')
-        <h5 class="text-uppercase">HIMSI {{ $campus }}</h5>
+        <div class="mx-auto py-2">
+            <h5 class="text-uppercase">HIMSI {{ substr($campus, 0, 13) }}@if (strlen($campus) > 13)
+                    ...
+                @endif
+            </h5>
+        </div>
+        <img src="<?= asset('img/logo/bsi.png') ?>" class="logo-navbar">
     @endcomponent
     <div class="container d-flex align-items-center justify-content-center" style="height: 70vh;">
         <div class="card shadow" style="width: 90%">
@@ -34,4 +36,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-guest-layout>
