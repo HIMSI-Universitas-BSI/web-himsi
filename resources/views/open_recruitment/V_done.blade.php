@@ -19,7 +19,7 @@
                         nobis
                         officiis</p>
                     <div class="my-3">
-                        <a href="/oprec/data/{{ $NIM }}">Edit data pendaftaran</a>
+                        <a href="/oprec/edit/{{ $NIM }}">Edit data pendaftaran</a>
                     </div>
                 </div>
             </div>

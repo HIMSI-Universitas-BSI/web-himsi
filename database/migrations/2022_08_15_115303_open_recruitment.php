@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('NIM');
             $table->string('full_name', 64);
-            $table->foreignId('campuses_id')->constrained('campuses');
+            $table->string('campus', 64);
             $table->integer('semester');
             $table->string('ektm')->nullable();
             $table->string('cv')->nullable();

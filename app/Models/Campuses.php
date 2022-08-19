@@ -11,9 +11,4 @@ class Campuses extends Model
     protected $table = 'campuses';
     protected $fillable = ['id', 'name', 'image'];
     public $timestamps = true;
-
-    public function Open_recruitment()
-    {
-        return $this->hasMany(Open_recruitment::class);
-    }
 }
