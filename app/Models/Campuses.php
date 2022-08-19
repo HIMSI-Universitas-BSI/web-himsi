@@ -9,6 +9,11 @@ class Campuses extends Model
 {
     use HasFactory;
     protected $table = 'campuses';
-    protected $fillable = ['name', 'image'];
+    protected $fillable = ['id', 'name', 'image'];
     public $timestamps = true;
+
+    public function Open_recruitment()
+    {
+        return $this->hasMany(Open_recruitment::class);
+    }
 }

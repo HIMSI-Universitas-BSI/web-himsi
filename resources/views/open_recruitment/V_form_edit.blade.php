@@ -5,11 +5,11 @@
         </div>
     @endcomponent
     <div class="container">
+        @include('layouts.partials.alert')
         <div class="card shadow">
             <div class="card-header judul-halaman">
-                @include('layouts.partials.alert')
                 <div class="text-center my-3">
-                    <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $campus }}</h4>
+                    <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $OR->campuses->name }}</h4>
                 </div>
             </div>
             <div class="card-body">
@@ -50,14 +50,15 @@
 
         <form action="/oprec" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="campus" value="{{ old('campus', $campus) }}">
-            <input type="hidden" name="NIM" value="{{ old('NIM', $NIM) }}">
+            <input type="hidden" name="campus" value="{{ old('campus', $OR->campuses->id) }}">
+            <input type="hidden" name="NIM" value="{{ old('NIM', $OR->NIM) }}">
             <div class="card my-3">
                 <div class="card-body">
                     <div class="input">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                            id="email" placeholder="Masukan email" required value="{{ old('email') }}">
+                        <input type="text" class="form-control @error('email', $OR->email) is-invalid @enderror"
+                            name="email" id="email" placeholder="Masukan email" required
+                            value="{{ old('email') }}">
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -70,7 +71,8 @@
                 <div class="card-body">
                     <div class="input">
                         <label for="full_name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control @error('full_name') is-invalid @enderror"
+                        <input type="text"
+                            class="form-control @error('full_name', $OR->full_name) is-invalid @enderror"
                             name="full_name" id="full_name" placeholder="Masukan nama lengkap" required
                             value="{{ old('full_name') }}">
                         @error('full_name')
@@ -86,7 +88,7 @@
                     <div class="input">
                         <label for="NIM" class="form-label">NIM</label>
                         <input type="text" class="form-control @error('NIM') is-invalid @enderror" id="NIM"
-                            readonly disabled value="{{ old('NIM', $NIM) }}">
+                            readonly disabled value="{{ old('NIM', $OR->NIM) }}">
                         @error('NIM')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -100,7 +102,7 @@
                     <div class="input">
                         <label for="campus" class="form-label">Asal Kampus</label>
                         <input type="text" class="form-control @error('campus') is-invalid @enderror" disabled
-                            readonly value="{{ old('campus', $campus) }}">
+                            readonly value="{{ old('campus', $OR->campuses->name) }}">
                         @error('campus')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -113,9 +115,9 @@
                 <div class="card-body">
                     <div class="input">
                         <label for="semester" class="form-label">Semester</label>
-                        <input type="number" class="form-control @error('semester') is-invalid @enderror"
-                            name="semester" id="semester" placeholder="Masukan semester" required
-                            value="{{ old('semester') }}">
+                        <input type="number"
+                            class="form-control @error('semester', $OR->semester) is-invalid @enderror" name="semester"
+                            id="semester" placeholder="Masukan semester" required value="{{ old('semester') }}">
                         @error('semester')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -128,9 +130,9 @@
                 <div class="card-body">
                     <div class="input">
                         <label for="whatsapp" class="form-label">No Whatsapp</label>
-                        <input type="number" class="form-control @error('whatsapp') is-invalid @enderror"
-                            name="whatsapp" id="whatsapp" placeholder="Masukan nomor whatsapp" required
-                            value="{{ old('whatsapp') }}">
+                        <input type="number"
+                            class="form-control @error('whatsapp', $OR->whatsapp) is-invalid @enderror" name="whatsapp"
+                            id="whatsapp" placeholder="Masukan nomor whatsapp" required value="{{ old('whatsapp') }}">
                         @error('whatsapp')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -176,7 +178,7 @@
                 <div class="card-body">
                     <div class="input">
                         <label for="motivasi_bergabung" class="form-label">Alasan Anda Ingin Bergabung HIMSI?</label>
-                        <textarea name="motivasi_bergabung" id="motivasi_bergabung"><?= old('motivasi_bergabung') ?></textarea>
+                        <textarea name="motivasi_bergabung" id="motivasi_bergabung"><?= old('motivasi_bergabung', $OR->motivasi_bergabung) ?></textarea>
                         @error('motivasi_bergabung')
                             <p class="text-danger"><small>{{ $message }}</small></p>
                         @enderror

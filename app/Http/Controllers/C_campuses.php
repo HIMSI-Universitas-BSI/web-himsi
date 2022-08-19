@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\campuses;
+use App\Models\Campuses;
 use Illuminate\Http\Request;
 
-class C_campuses extends Controller
+class C_Campuses extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,21 +41,21 @@ class C_campuses extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\campuses  $campuses
+     * @param  \App\Models\Campuses  $campuses
      * @return \Illuminate\Http\Response
      */
-    public function show(campuses $campuses)
+    public function show(Campuses $campuses)
     {
-        //
+        dd($campuses->Open_recruitment);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\campuses  $campuses
+     * @param  \App\Models\Campuses  $campuses
      * @return \Illuminate\Http\Response
      */
-    public function edit(campuses $campuses)
+    public function edit(Campuses $campuses)
     {
         //
     }
@@ -64,10 +64,10 @@ class C_campuses extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\campuses  $campuses
+     * @param  \App\Models\Campuses  $campuses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, campuses $campuses)
+    public function update(Request $request, Campuses $campuses)
     {
         //
     }
@@ -75,10 +75,10 @@ class C_campuses extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\campuses  $campuses
+     * @param  \App\Models\Campuses  $campuses
      * @return \Illuminate\Http\Response
      */
-    public function destroy(campuses $campuses)
+    public function destroy(Campuses $campuses)
     {
         //
     }

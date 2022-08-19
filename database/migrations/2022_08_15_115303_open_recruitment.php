@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('full_name', 64);
             $table->foreignId('campuses_id')->constrained('campuses');
             $table->integer('semester');
-            $table->string('ektm');
-            $table->string('cv');
+            $table->string('ektm')->nullable();
+            $table->string('cv')->nullable();
             $table->string('whatsapp', 13);
             $table->string('email', 128);
             $table->text('motivasi_bergabung');

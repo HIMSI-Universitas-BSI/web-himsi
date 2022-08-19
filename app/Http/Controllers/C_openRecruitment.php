@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campuses;
-use App\Models\open_recruitment;
+use App\Models\Open_recruitment;
 use Illuminate\Http\Request;
 
 class C_openRecruitment extends Controller
@@ -46,11 +46,19 @@ class C_openRecruitment extends Controller
             'NIM.required' => 'NIM wajib di isi',
             'NIM.size' => 'NIM harus 8 angka yang di input ' . strlen($request->NIM) . ' angka'
         ]);
+        $cek = Open_recruitment::where('NIM', $request->NIM)->exists();
+        if ($cek) {
+            return redirect('/oprec/done/' . $request->NIM)->with('success', 'NIM sudah terdaftar');
+        }
         return redirect("/oprec/form/$request->campus/$request->NIM");
     }
 
     public function form(Request $request)
     {
+        $campuses = Campuses::where('name', $request->campus)->first();
+        if (!$campuses || strlen($request->NIM) < 8 || strlen($request->NIM) > 8) {
+            return redirect('/')->with('failed', 'Aksi Ilegal Hayo Mau Ngapain?');
+        }
         return view('open_recruitment.V_form_oprec', [
             'campus' => $request->campus,
             'NIM' => $request->NIM
@@ -91,30 +99,45 @@ class C_openRecruitment extends Controller
 
         $campuses = Campuses::where('name', $request->campus)->first();
         if (!$campuses) {
-            return back()->with('failed', 'Aksi ilegal nama kampus tidak tersedia');
+            return back()->with('failed', 'nama kampus tidak tersedia');
         }
 
-        // $insert = open_recruitment::create([
-        //     'NIM' => $request->NIM,
-        //     'full_name' => $request->full_name,
-        //     'campuses_id' => $campuses->id,
-        //     'semester' => $request->semester,
-        // ]);
+        $create = Open_recruitment::create([
+            'NIM' => $request->NIM,
+            'full_name' => $request->full_name,
+            'campuses_id' => $campuses->id,
+            'semester' => $request->semester,
+            'whatsapp' => $request->whatsapp,
+            'email' => $request->email,
+            'motivasi_bergabung' => $request->motivasi_bergabung,
+        ]);
 
-        return redirect('/oprec/done')->with('success', 'Berhasil Melakukan Pendaftaran');
+        if ($request->hasFile('ektm') && $request->hasFile('cv')) {
+            $create->ektm =  $request->file('ektm')->store('img/ektm');
+            $create->cv =  $request->file('cv')->store('document/cv');
+            $create->save();
+        }
+
+        return redirect('/oprec/done/' . $create->NIM)->with('success', 'Berhasil Melakukan Pendaftaran');
     }
 
-    public function done()
+    public function done($NIM)
     {
-        return view('open_recruitment.V_done');
+        $cek = Open_recruitment::where('NIM', $NIM)->exists();
+        if (!$cek) {
+            return redirect('/')->with('failed', 'NIM belum terdaftar');
+        }
+        return view('open_recruitment.V_done', [
+            'NIM' => $NIM
+        ]);
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\open_recruitment  $open_recruitment
+     * @param  \App\Models\Open_recruitment  $open_recruitment
      * @return \Illuminate\Http\Response
      */
-    public function show(open_recruitment $open_recruitment)
+    public function show(Open_recruitment $open_recruitment)
     {
         //
     }
@@ -122,22 +145,25 @@ class C_openRecruitment extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\open_recruitment  $open_recruitment
+     * @param  \App\Models\Open_recruitment  $open_recruitment
      * @return \Illuminate\Http\Response
      */
-    public function edit(open_recruitment $open_recruitment)
+    public function edit(Open_recruitment $open_recruitment)
     {
-        return view('open_recruitment.V_form_oprec');
+        dd($open_recruitment->campuses());
+        return view('open_recruitment.V_form_edit', [
+            'OR' => $open_recruitment
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\open_recruitment  $open_recruitment
+     * @param  \App\Models\Open_recruitment  $open_recruitment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, open_recruitment $open_recruitment)
+    public function update(Request $request, Open_recruitment $open_recruitment)
     {
         //
     }
@@ -145,10 +171,10 @@ class C_openRecruitment extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\open_recruitment  $open_recruitment
+     * @param  \App\Models\Open_recruitment  $open_recruitment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(open_recruitment $open_recruitment)
+    public function destroy(Open_recruitment $open_recruitment)
     {
         //
     }

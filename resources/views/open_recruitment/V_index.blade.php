@@ -5,6 +5,9 @@
         </div>
     @endcomponent
     <div class="container">
+        <div class="mt-2">
+            @include('layouts.partials.alert')
+        </div>
         <div class="box-video-profile">
             <video autoplay controls>
                 <source src="/video/profile.mp4" type="video/mp4">

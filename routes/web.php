@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\C_campuses;
 use App\Http\Controllers\C_openRecruitment;
 use Illuminate\Support\Facades\Route;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -20,13 +21,18 @@ Route::get('/', [C_openRecruitment::class, 'index']);
 
 Route::group(['prefix' => 'oprec'], function () {
     Route::get('/', [C_openRecruitment::class, 'index']);
+    Route::get('/data/{Open_recruitment}', [C_openRecruitment::class, 'edit']);
     Route::get('/choose-campus', [C_openRecruitment::class, 'chooseCampus']);
     Route::get('/choose-campus/{campus}', [C_openRecruitment::class, 'inputNIM']);
     Route::post('/input-nim', [C_openRecruitment::class, 'create']);
     Route::get('/form/{campus}/{NIM}', [C_openRecruitment::class, 'form']);
     Route::post('/', [C_openRecruitment::class, 'store']);
-    Route::get('/done', [C_openRecruitment::class, 'done']);
+    Route::get('/done/{NIM}', [C_openRecruitment::class, 'done']);
 });
+
+Route::resources([
+    'campuses' => C_campuses::class
+]);
 
 // Route::get('/generate', function () {
 //     $now = Carbon::now()->format('ym');
