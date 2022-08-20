@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Open_recruitment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class C_openRecruitment extends Controller
+class C_users extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class C_openRecruitment extends Controller
      */
     public function index()
     {
-        return 'COBA';
+        //
     }
 
     /**
@@ -42,10 +42,10 @@ class C_openRecruitment extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Open_recruitment $open_recruitment)
+    public function show(User $user)
     {
         //
     }
@@ -53,10 +53,10 @@ class C_openRecruitment extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Open_recruitment $open_recruitment)
+    public function edit(User $user)
     {
         //
     }
@@ -65,10 +65,10 @@ class C_openRecruitment extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Open_recruitment $open_recruitment)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -76,10 +76,10 @@ class C_openRecruitment extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Open_recruitment $open_recruitment)
+    public function destroy(User $user)
     {
         //
     }

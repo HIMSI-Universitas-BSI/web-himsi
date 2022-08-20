@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <form action="/oprec/{{ $OR->id }}" method="post" enctype="multipart/form-data">
+        <form action="/oprec/form/{{ $OR->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <input type="hidden" name="old_ektm" value="{{ $OR->ektm }}">
@@ -101,9 +101,9 @@
                 <div class="card-body">
                     <div class="input">
                         <label for="campus" class="form-label">Asal Kampus</label>
-                        <select class="form-control @error('campus') is-invalid @enderror" name="campus">
-                            @foreach ($campuses as $item)
-                                <option value="{{ $item->name }}" @selected(old('campus', $OR->campus) === $item->name)>{{ $item->name }}
+                        <select class="form-control @error('campus') is-invalid @enderror" name="campuses_id">
+                            @foreach ($campuses as $campus)
+                                <option value="{{ $campus->id }}" @selected(old('campuses_id', $OR->campuses->id) === $campus->id)>{{ $campus->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -188,22 +188,6 @@
             </div>
             <div class="card my-3">
                 <div class="card-body">
-                    <div class="modal fade" id="cv-modal" tabindex="-1" aria-labelledby="cv-modalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                </div>
-                                <div class="modal-body">
-                                    <object data="/storage/{{ $OR->cv }}" width="100%"></object>
-                                </div>
-                                <div class="modal-footer justify-content-center">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="input-cv d-none">
                         <label for="cv" class="form-label">Upload Curriculum Vitae (CV)</label>
@@ -219,10 +203,10 @@
                         @enderror
                     </div>
                     <div class="button-rubah mt-2">
-                        <button type="button" class="btn btn-info btn-sm my-2" data-bs-toggle="modal"
-                            data-bs-target="#cv-modal" id="btn-cv-modal">
+                        <a target="_blank" href="/storage/{{ $OR->cv }}" class="btn btn-info btn-sm my-2"
+                            id="btn-cv-modal">
                             Preview CV
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-sm btn-primary" id="rubah-cv">Rubah CV</button>
                         <button type="button" class="btn btn-sm btn-danger d-none" id="batal-rubah-cv">Batal
                             Rubah</button>

@@ -14,17 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('open_recruitment', function (Blueprint $table) {
-            $table->id();
-            $table->integer('NIM');
+            $table->uuid('id')->primary();
+            $table->integer('NIM')->unique();
+            $table->string('no_anggota')->nullable();
             $table->string('full_name', 64);
-            $table->string('campus', 64);
+            $table->foreignId('campuses_id')->constrained('campuses');
             $table->integer('semester');
             $table->string('ektm')->nullable();
             $table->string('cv')->nullable();
             $table->string('whatsapp', 13);
-            $table->string('email', 128);
+            $table->string('email', 128)->unique();
             $table->text('motivasi_bergabung');
-            $table->enum('status_interview', ['Sudah', 'Belum'])->default('Belum');
+            $table->enum('status_interview', ['sudah', 'belum'])->default('belum');
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@
             <div class="card-header judul-halaman">
                 @include('layouts.partials.alert')
                 <div class="text-center my-3">
-                    <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $campus }}</h4>
+                    <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $campus->name }}</h4>
                 </div>
             </div>
             <div class="card-body">
@@ -50,7 +50,7 @@
 
         <form action="/oprec" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="campus" value="{{ old('campus', $campus) }}">
+            <input type="hidden" name="campuses_id" value="{{ old('campuses_id', $campus->id) }}">
             <input type="hidden" name="NIM" value="{{ old('NIM', $NIM) }}">
             <div class="card my-3">
                 <div class="card-body">
@@ -100,7 +100,7 @@
                     <div class="input">
                         <label for="campus" class="form-label">Asal Kampus</label>
                         <input type="text" class="form-control @error('campus') is-invalid @enderror" disabled
-                            readonly value="{{ old('campus', $campus) }}">
+                            readonly value="{{ old('campus', $campus->name) }}">
                         @error('campus')
                             <div class="invalid-feedback">
                                 {{ $message }}

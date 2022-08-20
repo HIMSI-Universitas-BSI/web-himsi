@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('positions_id')->constrained('positions');
-            $table->foreignId('campuses_id')->nullable()->constrained('campuses');
+            $table->foreignId('campuses_id')->constrained('campuses')->nullable();
         });
     }
 

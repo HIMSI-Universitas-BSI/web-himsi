@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campuses;
-use App\Models\Open_recruitment;
+use App\Models\{Campuses, OpenRecruitment};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,11 +26,14 @@ class C_openRecruitment extends Controller
             'campuses' => $campuses
         ]);
     }
-    public function inputNIM()
+    public function inputNIM(Request $request)
     {
-        $campus = request('campus');
+        $campuses = Campuses::where('name', $request->campus)->first();
+        if (!$campuses) {
+            return redirect('/oprec/choose-campus')->with('failed', 'Aksi Ilegal');
+        }
         return view('open_recruitment.V_input_nim', [
-            'campus' => $campus
+            'campus' => $request->campus
         ]);
     }
     /**
@@ -47,10 +49,10 @@ class C_openRecruitment extends Controller
             'NIM.required' => 'NIM wajib di isi',
             'NIM.size' => 'NIM harus 8 angka yang di input ' . strlen($request->NIM) . ' angka'
         ]);
-        $cek = Open_recruitment::where('NIM', $request->NIM)->exists();
+        $cek = OpenRecruitment::where('NIM', $request->NIM)->first();
         if ($cek) {
             return view('open_recruitment.V_done', [
-                'NIM' => $request->NIM
+                'data' => $cek
             ]);
         }
         return redirect("/oprec/form/$request->campus/$request->NIM");
@@ -63,7 +65,7 @@ class C_openRecruitment extends Controller
             return redirect('/')->with('failed', 'Aksi Ilegal Hayo Mau Ngapain?');
         }
         return view('open_recruitment.V_form_oprec', [
-            'campus' => $request->campus,
+            'campus' => $campuses,
             'NIM' => $request->NIM
         ]);
     }
@@ -79,7 +81,7 @@ class C_openRecruitment extends Controller
         $dataValid = $request->validate([
             'NIM' => ['required', 'size:8', 'unique:open_recruitment'],
             'full_name' => ['required', 'min:3'],
-            'campus' => ['required'],
+            'campuses_id' => ['required'],
             'semester' => ['required', 'integer', 'min:1', 'max:8'],
             'ektm' => ['required', 'image', 'max:2048'],
             'cv' => ['required', 'file', 'mimetypes:application/pdf', 'max:2048'],
@@ -99,30 +101,33 @@ class C_openRecruitment extends Controller
             'whatsapp.min' => 'Nomor Whastapp min 11 angka'
         ]);
 
-        $campuses = Campuses::where('name', $request->campus)->first();
-        if (!$campuses) {
-            return back()->with('failed', 'nama kampus tidak tersedia');
-        }
 
-        $create = Open_recruitment::create($dataValid);
+        $create = new OpenRecruitment();
+        $create->NIM = $dataValid['NIM'];
+        $create->full_name = $dataValid['full_name'];
+        $create->campuses_id = $dataValid['campuses_id'];
+        $create->semester = $dataValid['semester'];
+        $create->whatsapp = $dataValid['whatsapp'];
+        $create->email = $dataValid['email'];
+        $create->motivasi_bergabung = $dataValid['motivasi_bergabung'];
 
         if ($request->hasFile('ektm') && $request->hasFile('cv')) {
             $create->ektm =  $request->file('ektm')->store('img/ektm');
             $create->cv =  $request->file('cv')->store('document/cv');
-            $create->save();
         }
+        $create->save();
 
         return view('open_recruitment.V_done', [
-            'NIM' => $request->NIM
+            'data' => $create
         ]);
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\OpenRecruitment  $openRecruitment
      * @return \Illuminate\Http\Response
      */
-    public function show(Open_recruitment $open_recruitment)
+    public function show(OpenRecruitment $openRecruitment)
     {
         //
     }
@@ -130,14 +135,13 @@ class C_openRecruitment extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\OpenRecruitment  $openRecruitment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(OpenRecruitment $openRecruitment)
     {
-        $open_recruitment = Open_recruitment::where('NIM', $request->NIM)->first();
         return view('open_recruitment.V_form_edit', [
-            'OR' => $open_recruitment,
+            'OR' => $openRecruitment,
             'campuses' => Campuses::all()
         ]);
     }
@@ -146,15 +150,15 @@ class C_openRecruitment extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\OpenRecruitment  $openRecruitment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Open_recruitment $open_recruitment)
+    public function update(Request $request, OpenRecruitment $openRecruitment)
     {
         $request->validate([
             'NIM' => ['required', 'size:8',],
             'full_name' => ['required', 'min:3'],
-            'campus' => ['required'],
+            'campuses_id' => ['required'],
             'semester' => ['required', 'integer', 'min:1', 'max:8'],
             'ektm' => ['image', 'max:2048'],
             'cv' => ['file', 'mimetypes:application/pdf', 'max:2048'],
@@ -174,40 +178,36 @@ class C_openRecruitment extends Controller
             'whatsapp.min' => 'Nomor Whastapp min 11 angka'
         ]);
 
-        $campuses = Campuses::where('name', $request->campus)->first();
-        if (!$campuses) {
-            return back()->with('failed', 'nama kampus tidak tersedia');
-        }
-        $open_recruitment->NIM = $request->NIM;
-        $open_recruitment->full_name = $request->full_name;
-        $open_recruitment->campus = $request->campus;
-        $open_recruitment->semester = $request->semester;
-        $open_recruitment->whatsapp = $request->whatsapp;
-        $open_recruitment->email = $request->email;
-        $open_recruitment->motivasi_bergabung = $request->motivasi_bergabung;
+        $openRecruitment->NIM = $request->NIM;
+        $openRecruitment->full_name = $request->full_name;
+        $openRecruitment->campuses_id = $request->campuses_id;
+        $openRecruitment->semester = $request->semester;
+        $openRecruitment->whatsapp = $request->whatsapp;
+        $openRecruitment->email = $request->email;
+        $openRecruitment->motivasi_bergabung = $request->motivasi_bergabung;
 
         if ($request->hasFile('ektm')) {
-            $open_recruitment->ektm =  $request->file('ektm')->store('img/ektm');
+            $openRecruitment->ektm =  $request->file('ektm')->store('img/ektm');
             Storage::delete($request->old_ektm);
         }
         if ($request->hasFile('cv')) {
-            $open_recruitment->cv =  $request->file('cv')->store('document/cv');
+            $openRecruitment->cv =  $request->file('cv')->store('document/cv');
             Storage::delete($request->old_cv);
         }
-        $open_recruitment->save();
+        $openRecruitment->save();
 
         return view('open_recruitment.V_done', [
-            'NIM' => $request->NIM
+            'data' => $openRecruitment
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Open_recruitment  $open_recruitment
+     * @param  \App\Models\OpenRecruitment  $openRecruitment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Open_recruitment $open_recruitment)
+    public function destroy(OpenRecruitment $openRecruitment)
     {
         //
     }

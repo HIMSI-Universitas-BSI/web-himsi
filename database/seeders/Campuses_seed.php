@@ -18,63 +18,88 @@ class Campuses_seed extends Seeder
     {
         $campuses = [
             [
-                'name' => 'Cikarang',
+                'kode_sektor' => 'HT',
+                'name' => 'cikarang',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Cutmutiah',
+                'kode_sektor' => 'HB',
+                'name' => 'cengkareng',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Kaliabang',
+                'kode_sektor' => 'HB',
+                'name' => 'cimone',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Margonda',
+                'kode_sektor' => 'HP',
+                'name' => 'salemba 22',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Salemba',
+                'kode_sektor' => 'HP',
+                'name' => 'pemuda',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Pemuda',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Keramat',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Fatmawati',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Ciputat',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Ciledug',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Dewi Sartika',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Slipi',
-                'image' => 'bsi.png'
-            ],
-            [
-                'name' => 'Cengkareng',
-                'image' => 'bsi.png'
-            ],
-            [
+                'kode_sektor' => 'HB',
                 'name' => 'BSD',
                 'image' => 'bsi.png'
             ],
             [
-                'name' => 'Cimone',
+                'kode_sektor' => 'HT',
+                'name' => 'kaliabang',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => 'HT',
+                'name' => 'cut mutiah / bekasi',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => 'HP',
+                'name' => 'margonda',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => 'HP',
+                'name' => 'keramat 98',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'fatmawati',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'ciputat',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'ciledug',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'dewi sartika B',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'kalimalang',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'cibitung',
+                'image' => 'bsi.png'
+            ],
+            [
+                'kode_sektor' => null,
+                'name' => 'slipi',
                 'image' => 'bsi.png'
             ],
         ];
