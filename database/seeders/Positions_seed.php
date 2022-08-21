@@ -17,10 +17,24 @@ class Positions_seed extends Seeder
     {
         $positions = [
             [
-                'name' => 'admin'
+                'name' => 'admin',
+                'level' => 'super'
             ],
             [
-                'name' => 'panitia'
+                'name' => 'Ketua Umum',
+                'level' => 'DPP'
+            ],
+            [
+                'name' => 'Kepala Divisi PSDM',
+                'level' => 'DPP'
+            ],
+            [
+                'name' => 'Anggota PSDM',
+                'level' => 'DPP'
+            ],
+            [
+                'name' => 'Koordinator RSDM',
+                'level' => 'DPC'
             ],
 
         ];

@@ -16,10 +16,10 @@
                     @include('layouts.partials.alert-bs4')
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Seluruh Kampus</h4>
+                            <h4 class="card-title">Data oprec Kampus {{ $campus }}</h4>
                             <h6 class="card-subtitle">
-                                Table ini merupakan rekap singkat dari seluruh kampus click pada data table untuk lebih
-                                detail
+                                Table ini merupakan data seluruh pendaftar dari kampus {{ $campus }} click pada
+                                data untuk melihat detailnya
                             </h6>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered no-wrap">

@@ -46,7 +46,7 @@ Route::group(['prefix' => 'panitia', 'middleware' => 'auth'], function () {
         Route::get('/campus/{campuses}/{status_interview}', [Panitia_Oprec::class, 'filterInterview']);
         Route::put('/interview/{openRecruitment}', [Panitia_Oprec::class, 'updateStatus']);
         Route::get('/{openRecruitment}', [Panitia_Oprec::class, 'show']);
-        Route::delete('/{openRecruitment}', [Panitia_Oprec::class, 'destroy']);
+        Route::delete('/{openRecruitment}', [Panitia_Oprec::class, 'destroy'])->middleware('admin');
     });
 });
 

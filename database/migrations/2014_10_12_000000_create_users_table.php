@@ -14,10 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('id', 12)->primary();
-            $table->string('full_name', 64)->nullable();
-            $table->string('NIM', 8)->unique();
-            $table->string('image')->default('user.png');
+            $table->id();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

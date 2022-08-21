@@ -13,17 +13,22 @@ class C_authentication extends Controller
     }
     public function storeLogin(Request $request)
     {
-        $request->validate([
+        $credential = $request->validate([
             'NIM'  => ['required', 'size:8'],
             'password' => ['required', 'min:8']
         ]);
+        if (Auth::attempt($credential)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/panitia')->with('success', 'Welcome ' . auth()->user()->full_name);
+        }
 
-        Auth::attempt(request()->only('NIM', 'password'));
-        return redirect('/panitia');
+        return back()->with('Gagal Login');
     }
     public function logout()
     {
         Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         return redirect(route('login'));
     }
 }

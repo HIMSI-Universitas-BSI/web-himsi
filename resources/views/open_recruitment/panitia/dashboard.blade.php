@@ -9,8 +9,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Welcome
-                        {{ auth()->user()->full_name }}</h3>
+                    @include('layouts.partials.alert-bs4')
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\panitia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\{Campuses, OpenRecruitment};
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
@@ -24,8 +25,15 @@ class C_openRecruitment extends Controller
 
     public function campus(Campuses $campuses)
     {
+        if (Auth::user()->positions->level != 'DPP' xor Auth::user()->positions->name != 'admin') {
+        } else {
+            if (Auth::user()->campuses->name != $campuses->name) {
+                return back()->with('failed', 'kamu hanya bisa mengakses data kampus ' . Auth::user()->campuses->name);
+            }
+        }
         return view('open_recruitment.panitia.data.V_oprec', [
             'openRecruitment' => OpenRecruitment::with('campuses')->where('campuses_id', $campuses->id)->get(),
+            'campus' => $campuses->name
         ]);
     }
     public function filterInterview(Campuses $campuses, Request $request)
@@ -100,6 +108,11 @@ class C_openRecruitment extends Controller
      */
     public function updateStatus(Request $request, OpenRecruitment $openRecruitment)
     {
+        if (Auth::user()->positions->level != 'DPP' || Auth::user()->positions->name != 'admin') {
+            if (Auth::user()->campuses->name != $openRecruitment->campuses->name) {
+                return back()->with('failed', 'kamu hanya bisa mengakses data kampus ' . Auth::user()->campuses->name);
+            }
+        }
         $openRecruitment->status_interview = $request->status_interview;
         $kode_sektor = $openRecruitment->campuses->kode_sektor;
         if (!$openRecruitment->no_anggota) {
@@ -135,6 +148,9 @@ class C_openRecruitment extends Controller
      */
     public function destroy(OpenRecruitment $openRecruitment)
     {
+        if (Auth::user()->positions->name != 'admin') {
+            return back()->with('failed', 'kamu tidak mempunyai hak untuk menghapus');
+        }
         $campuses_id = $openRecruitment->campuses_id;
         $delete = $openRecruitment->delete();
         if ($delete) {

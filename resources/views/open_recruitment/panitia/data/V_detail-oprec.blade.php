@@ -17,12 +17,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="action text-right">
-                                <form action="/panitia/openrecruitment/{{ $oprec->id }}" method="POST"
-                                    class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                </form>
+                                @can('admin')
+                                    <form action="/panitia/openrecruitment/{{ $oprec->id }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Yakin ingin menghapus?')"
+                                            class="btn btn-sm btn-danger">HAPUS</button>
+                                    </form>
+                                @endcan
                                 <button type="button" data-target="#ubah-status" data-toggle="modal"
                                     class="btn btn-sm btn-primary">UBAH STATUS</button>
                             </div>

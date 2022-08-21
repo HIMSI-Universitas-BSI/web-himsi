@@ -5,9 +5,20 @@
         </div>
     @endcomponent
     <div class="container">
+        <div class="my-2">
+            @include('layouts.partials.alert')
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
         <div class="card shadow">
             <div class="card-header judul-halaman">
-                @include('layouts.partials.alert')
                 <div class="text-center my-3">
                     <h4>Pendaftaran Anggota Baru HIMSI UBSI Kampus {{ $campus->name }}</h4>
                 </div>
@@ -38,7 +49,8 @@
                 </ul>
                 <p>Sedangkan untuk lingkup <b>KAMPUS PSDKU</b> (Program Studi Diluar Kampus Utama) yaitu :
                     Karawang, Bogor, Pontianak, Tegal. </p>
-                <p class="mt-3">Teruntuk Mahasiswa/i yang mendaftarkan diri, Jika KAMPUS UTAMA anda tidak disebutkan di
+                <p class="mt-3">Teruntuk Mahasiswa/i yang mendaftarkan diri, Jika KAMPUS UTAMA anda tidak disebutkan
+                    di
                     atas, jangan
                     berkecil hati tetap lanjutkan pendaftaran. Kami akan membantu teman-teman untuk mendirikannya di
                     Kampus
