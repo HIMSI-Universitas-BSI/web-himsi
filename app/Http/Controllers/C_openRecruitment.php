@@ -98,7 +98,8 @@ class C_openRecruitment extends Controller
             'cv.mimetypes' => 'Tolong upload PDF yah jangan yang lain',
             'cv.max' => 'Maximal upload 2mb',
             'whatsapp.max' => 'Nomor Whastapp max 13 angka',
-            'whatsapp.min' => 'Nomor Whastapp min 11 angka'
+            'whatsapp.min' => 'Nomor Whastapp min 11 angka',
+            'motivasi_bergabung.required' => 'Motivasi bergabung wajib di isi'
         ]);
 
 

@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
             $table->string('name', 128);
+            $table->string('group_wa')->nullable();
+            $table->string('instagram')->nullable();
             $table->string('kode_sektor', 2)->nullable();
             $table->text('image')->default('bsi.png');
             $table->timestamps();

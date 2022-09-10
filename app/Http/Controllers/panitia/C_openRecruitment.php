@@ -114,7 +114,6 @@ class C_openRecruitment extends Controller
             }
         }
         $openRecruitment->status_interview = $request->status_interview;
-        $kode_sektor = $openRecruitment->campuses->kode_sektor;
         if (!$openRecruitment->no_anggota) {
             $no_cabang = $openRecruitment->campuses_id < 10 ? "0$openRecruitment->campuses_id" : "$openRecruitment->campuses_id";
             $year = Carbon::now()->format('y');
@@ -127,9 +126,9 @@ class C_openRecruitment extends Controller
                     $nomer_anggota_terakhir = 1;
                 }
                 $anggota_ke = str_repeat("0", 4 - strlen($nomer_anggota_terakhir)) . "$nomer_anggota_terakhir";
-                $no_anggota = "$kode_sektor.$no_cabang.$anggota_ke.$kode_prodi.$year";
+                $no_anggota = "H$no_cabang.$anggota_ke.$kode_prodi.$year";
             } else {
-                $no_anggota = "$kode_sektor.$no_cabang.0001.$kode_prodi.$year";
+                $no_anggota = "H$no_cabang.0001.$kode_prodi.$year";
             }
             $openRecruitment->no_anggota = $no_anggota;
         }
