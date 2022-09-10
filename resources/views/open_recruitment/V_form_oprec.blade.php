@@ -172,7 +172,8 @@
                     <div class="input">
                         <label for="cv" class="form-label">Upload Curriculum Vitae (CV)</label>
                         <p class="mb-1">Jika belum punya cv silahkan download template di sini <a
-                                href="#">download</a></p>
+                                href="https://drive.google.com/uc?export=download&id=1DwEY5YF976tpNd4_0X17KODKuWeIb_n1">download</a>
+                        </p>
                         <p class="mb-2 text-danger">Wajib PDF</p>
                         <input type="file" accept=".pdf" class="form-control @error('cv') is-invalid @enderror"
                             name="cv" id="cv" required value="{{ old('cv') }}">

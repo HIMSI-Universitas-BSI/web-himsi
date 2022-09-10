@@ -15,27 +15,95 @@
         </div>
         <div class="card shadow position-relative">
             <div class="card-body">
-                <h5 class="card-title">Himpunan Mahasiswa Sistem Informasi (HIMSI) Universitas Bina Sarana Informatika
-                </h5>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ultrices mi sit facilisis sit tincidunt sit
-                    parturient porta. Tellus et odio arcu in odio amet risus. Pharetra convallis et, etiam quam egestas
-                    amet
-                    magna. Proin non lectus metus aliquet dolor cursus. Feugiat rhoncus eu pellentesque interdum duis
-                    arcu
-                    at vel. Amet, quam facilisis posuere nascetur faucibus venenatis. Amet vel eu fringilla ultricies
-                    nam
-                    magna. Quisque blandit quisque feugiat neque pretium. Lobortis in odio vel diam eu, ultricies
-                    interdum
-                    ante volutpat. Quis luctus at elit lorem faucibus et. Eget a, faucibus ornare sodales et scelerisque
-                    amet netus. Tincidunt dis amet vitae quis. Varius feugiat ac sagittis at faucibus velit ut. Orci
-                    eros,
-                    tortor pharetra augue dis malesuada amet. Nibh mattis sit nisl, feugiat. Lacus, eu vulputate eros
-                    turpis
-                    facilisis. Consequat accumsan leo urna orci, in vivamus. Eleifend consequat habitasse cras sed
-                    pharetra
-                    leo, scelerisque. Id vulputate velit, elit nunc donec aliquam, turpis enim, sed.
+                <h5 class="card-title">[PROFIL HIMSI UBSI 2022]</h5>
+                <p>
+                    Halo Sobat Sistem Informasi! 👋🏻
                 </p>
+                <br>
+                <p>
+                    Kamu masih galau mau masuk HIMA apa?
+                    Eits, tunggu dulu!
+                    Kenalan dulu yuk sama HIMSI
+                </p>
+                <br>
+                <p>
+                    Hmm, apa sih itu HIMSI? <br>
+                    HIMSI adalah ORMAWA yang merangkul seluruh Mahasiswa Sistem Informasi
+                </p>
+                <br>
+                <p>
+                    Coba nonton video ini deh, agar kalian dapat mengenal lebih dalam tentang HIMSI.
+                </p>
+                <br>
+                <p>
+                    Berikut adalah profil dari HIMSI UBSI 2022🥰
+                </p>
+                <br>
+                <p>
+                    Keren ngga? Keren dong pastinya✨
+                </p>
+                <p>
+                    So, tunggu apalagi?
+                </p>
+                <p>
+                    Yuk, join HIMSI UBSI ya!
+                </p>
+                <br>
+                <p>
+                    Open Recruitment HIMSI pada
+                    11 September 2021
+                    Pada acara ORMAWA EXPO Universitas BSI di Kampus Kaliabang
+                </p>
+                <br>
+                <p>
+                    Atau bisa juga daftar di website ini
+                </p>
+
+                <br>
+                <p>
+                    Kalau udah daftar HIMSI, apa aja sih yang akan kamu dapatkan?
+                    <br>
+                    Yang pastinya :
+                </p>
+                <ul>
+                    <li>Sertifikat</li>
+                    <li>Pengalaman</li>
+                    <li>Relasi</li>
+                    <li>Softskill</li>
+                    <li>Kemampuan Public Speaking</li>
+                    <li>dan masih banyak lainnya.</li>
+                </ul>
+
+                <p class="fst-italic">
+                    "Bangsa yang besar adalah bangsa yang menghormati jasa pahlawannya. Mahasiswa yang besar adalah
+                    mereka
+                    yang menghormati organisasinya. Membesarkannya sepenuh hati dan bersama memberikan yang terbaik
+                    untuk
+                    bangsa dan negara!"
+                </p>
+                <br>
+                <p>
+                    Salam Kenal dari Kami, Pengurus HIMSI UBSI🤗
+                </p>
+                <br>
+                #HIMSIUBSI
+                <br>
+                #OPENRECRUITMENTHIMSI2022
+                <br>
+                #OPRECHIMSIUBSI2022
+                <br>
+                #RANTAISINERGI
+                <br>
+                #MAHASISWABSI
+                <br>
+                #MAHASISWASI
+                <br>
+                #SISTEMINFORMASI
+                <br>
+                #MAHASISWAINDONESIA
+                <br>
+                #BSI
+                <p class="card-text"></p>
                 <div class="text-center py-4">
                     <a href="/oprec/choose-campus" class="btn btn-primary">Lanjut Pendaftaran</a>
                 </div>
