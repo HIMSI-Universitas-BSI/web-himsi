@@ -9,9 +9,9 @@
             @include('layouts.partials.alert')
         </div>
         <div class="box-video-profile">
-            <video autoplay controls>
-                <source src="/video/PROFILE HIMSI.mp4" type="video/mp4">
-            </video>
+            <iframe width="420" height="240" style="position: relative;z-index: 10;margin:10px"
+                src="https://www.youtube.com/embed/xxoEVqFAEHg?autoplay=1&mute=1">
+            </iframe>
         </div>
         <div class="card shadow position-relative">
             <div class="card-body">
