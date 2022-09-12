@@ -74,9 +74,9 @@
                                 data-feather="chevron-down" class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+                        <a class="dropdown-item" href="/user/changePass"><i data-feather="key"
                                 class="svg-icon mr-2 ml-1"></i>
-                            My Profile</a>
+                            Change Password</a>
                         <div class="dropdown-divider"></div>
                         <form action="/authentication/logout" method="POST">
                             @csrf

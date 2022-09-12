@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\panitia\C_openRecruitment as Panitia_Oprec;
 use App\Http\Controllers\{C_authentication, C_campuses, C_dashboard, C_openRecruitment};
+use App\Http\Controllers\C_users;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::prefix('user')->group(function () {
+    Route::get('/changePass', [C_users::class, 'changePass']);
+    Route::post('/changePassAct', [C_users::class, 'changePassAct']);
+});
 
 Route::group(['prefix' => 'authentication'], function () {
     Route::get('/login', [C_authentication::class, 'login'])->name('login');

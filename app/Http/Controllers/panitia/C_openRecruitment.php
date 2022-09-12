@@ -28,7 +28,11 @@ class C_openRecruitment extends Controller
         if (Auth::user()->positions->level != 'DPP' xor Auth::user()->positions->name != 'admin') {
         } else {
             if (Auth::user()->campuses->name != $campuses->name) {
-                return back()->with('failed', 'kamu hanya bisa mengakses data kampus ' . Auth::user()->campuses->name);
+                $samudra = ['salemba 22', 'pemuda', 'keramat 98'];
+                if (in_array(Auth::user()->campuses->name, $samudra) && in_array($campuses->name, $samudra)) {
+                } else {
+                    return back()->with('failed', 'kamu hanya bisa mengakses data kampus ' . Auth::user()->campuses->name);
+                }
             }
         }
         return view('open_recruitment.panitia.data.V_oprec', [
