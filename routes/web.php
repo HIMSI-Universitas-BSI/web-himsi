@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\panitia\C_openRecruitment as Panitia_Oprec;
-use App\Http\Controllers\panitia\C_Users as Panitia_Users;
+use App\Http\Controllers\panitia\C_users as Panitia_Users;
 use App\Http\Controllers\{C_authentication, C_campuses, C_dashboard, C_openRecruitment, C_profileUser};
 use Illuminate\Support\Facades\Route;
 
