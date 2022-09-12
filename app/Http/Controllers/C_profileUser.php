@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class C_users extends Controller
+class C_profileUser extends Controller
 {
     public function changePass()
     {

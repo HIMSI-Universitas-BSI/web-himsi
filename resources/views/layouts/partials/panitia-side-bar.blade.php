@@ -23,6 +23,12 @@
                         </li>
                     </ul>
                 </li>
+                @can('admin')
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/manage-users"
+                            aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
+                                class="hide-menu">Data User</span></a>
+                    </li>
+                @endcan
                 {{-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false"><i
                             data-feather="sidebar" class="feather-icon"></i><span class="hide-menu">Content Web
                         </span></a>

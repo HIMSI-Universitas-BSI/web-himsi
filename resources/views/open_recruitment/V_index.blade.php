@@ -10,7 +10,7 @@
         </div>
         <div class="box-video-profile">
             <iframe width="420" height="240" style="position: relative;z-index: 10;margin:10px"
-                src="https://www.youtube.com/embed/xxoEVqFAEHg?autoplay=1&mute=1">
+                src="https://www.youtube.com/embed/7ewbObiFoQs">
             </iframe>
         </div>
         <div class="card shadow position-relative">

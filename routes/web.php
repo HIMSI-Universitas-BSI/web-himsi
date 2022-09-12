@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\panitia\C_openRecruitment as Panitia_Oprec;
-use App\Http\Controllers\{C_authentication, C_campuses, C_dashboard, C_openRecruitment};
-use App\Http\Controllers\C_users;
+use App\Http\Controllers\panitia\C_Users as Panitia_Users;
+use App\Http\Controllers\{C_authentication, C_campuses, C_dashboard, C_openRecruitment, C_profileUser};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('user')->group(function () {
-    Route::get('/changePass', [C_users::class, 'changePass']);
-    Route::post('/changePassAct', [C_users::class, 'changePassAct']);
+    Route::get('/changePass', [C_profileUser::class, 'changePass']);
+    Route::post('/changePassAct', [C_profileUser::class, 'changePassAct']);
+});
+Route::prefix('manage-users')->group(function () {
+    Route::get('/', [Panitia_Users::class, 'index']);
+    Route::get('/create', [Panitia_Users::class, 'create']);
+    Route::get('/{user}', [Panitia_Users::class, 'show']);
+    Route::post('/', [Panitia_Users::class, 'store']);
+    Route::put('/{user}', [Panitia_Users::class, 'update']);
 });
 
 Route::group(['prefix' => 'authentication'], function () {
