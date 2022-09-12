@@ -35,7 +35,9 @@
                                                 NIM</th>
                                             <th class="text-capitalize text-center" style="vertical-align: middle">
                                                 Nama Lengkap</th>
-                                            <th class="text-capitalize text-center text-center">Position
+                                            <th class="text-capitalize text-center text-center">Kampus
+                                            </th>
+                                            <th class="text-capitalize text-center text-center">Jabatan
                                             </th>
                                             <th class="text-capitalize text-center text-center">Action
                                             </th>
@@ -50,13 +52,14 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $u->NIM }}</td>
                                                 <td>{{ $u->full_name }}</td>
+                                                <td>{{ $u->campuses->name }}</td>
                                                 <td>{{ $u->positions->name }}</td>
                                                 <td class="text-center">
                                                     <button class="btn btn-info btn-sm">
-                                                        <i data-feather="eye" class="feather-icon"></i>
+                                                        <i class="fas fa-eye"></i>
                                                     </button>
                                                     <button class="btn btn-danger btn-sm">
-                                                        <i data-feather="trash-2" class="feather-icon"></i>
+                                                        <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                 </td>
                                             </tr>

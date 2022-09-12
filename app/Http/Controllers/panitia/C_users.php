@@ -20,7 +20,7 @@ class C_users extends Controller
     public function index()
     {
         return view('manage user.index', [
-            'users' => User::where('id', '!=', auth()->user()->id)->get(),
+            'users' => User::where('id', '!=', auth()->user()->id)->orderBy('positions_id', 'ASC')->get(),
         ]);
     }
 
