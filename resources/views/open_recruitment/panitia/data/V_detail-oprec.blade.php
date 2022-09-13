@@ -74,7 +74,7 @@
                                             <td>Whatsapp</td>
                                             <td><span class="mx-2">:</span></td>
                                             <td><a
-                                                    href="https://wa.me/{{ $oprec->whatsapp }}">{{ $oprec->whatsapp }}</a>
+                                                    href="https://wa.me/{{ $oprec->whatsapp[0] == '0' ? '62' . substr($oprec->whatsapp, 1) : $oprec->whatsapp }}">{{ $oprec->whatsapp }}</a>
                                             </td>
                                         </tr>
                                         <tr>
