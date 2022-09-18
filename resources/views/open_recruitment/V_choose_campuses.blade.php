@@ -20,7 +20,7 @@
                             <div id="campus">
                                 <div class="card text-center"
                                     onclick="window.location.href = '/oprec/choose-campus/{{ $c->name }}'">
-                                    <img src="<?= asset('img/campuses/' . $c->image) ?>" height="15 0px">
+                                    <img src="<?= asset('img/campuses/' . $c->image) ?>" height="150px">
                                     <div class="card-body p-2">
                                         <h6 class="text-uppercase">{{ $c->name }}</h6>
                                     </div>
