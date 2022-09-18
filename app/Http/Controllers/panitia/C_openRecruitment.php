@@ -125,7 +125,7 @@ class C_openRecruitment extends Controller
             $anggota_terakhir = OpenRecruitment::where('no_anggota', '!=', null)->latest('updated_at')->first();
             if ($anggota_terakhir) {
                 $last_year = explode('.', $anggota_terakhir->no_anggota)[3];
-                $nomer_anggota_terakhir = (int)explode('.', $anggota_terakhir->no_anggota)[2] + 1;
+                $nomer_anggota_terakhir = (int)explode('.', $anggota_terakhir->no_anggota)[1] + 1;
                 if ($last_year != $year) {
                     $nomer_anggota_terakhir = 1;
                 }
