@@ -63,6 +63,10 @@ Route::group(['prefix' => 'panitia', 'middleware' => 'auth'], function () {
     });
 });
 
+Route::prefix('export')->middleware('auth')->group(function () {
+    Route::get('/excel/{campuses}', [Panitia_Oprec::class, 'exportExcel']);
+});
+
 // Route::get('/generate', function () {
 //     $now = Carbon::now()->format('ym');
 //     $config = ['table' => 'users', 'length' => 12, 'prefix' => "UID-$now"];

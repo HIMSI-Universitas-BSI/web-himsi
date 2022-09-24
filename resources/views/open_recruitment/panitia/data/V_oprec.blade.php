@@ -21,6 +21,11 @@
                                 Table ini merupakan data seluruh pendaftar dari kampus {{ $campus }} click pada
                                 data untuk melihat detailnya
                             </h6>
+                            <div class="row my-2">
+                                <div class="col">
+                                    <a href="{{ $linkExcel }}" class="btn btn-success btn-sm">Export</a>
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                     <thead>

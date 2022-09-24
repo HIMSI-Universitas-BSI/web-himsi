@@ -7,6 +7,8 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\{Campuses, OpenRecruitment};
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\excelOprec;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class C_openRecruitment extends Controller
@@ -37,9 +39,20 @@ class C_openRecruitment extends Controller
         }
         return view('open_recruitment.panitia.data.V_oprec', [
             'openRecruitment' => OpenRecruitment::with('campuses')->where('campuses_id', $campuses->id)->get(),
-            'campus' => $campuses->name
+            'campus' => $campuses->name,
+            'linkExcel' => "/export/excel/$campuses->id"
         ]);
     }
+
+    public function exportExcel(Campuses $campuses)
+    {
+        $dataOprec = OpenRecruitment::with('campuses')->where('campuses_id', $campuses->id)->where('status_interview', 'sudah')->get();
+        $data = [
+            'dataOprec' => $dataOprec,
+        ];
+        return Excel::download(new excelOprec($data), 'OPREC ' . strtoupper($campuses->name) . " " . date('Y') . '.xlsx');
+    }
+
     public function filterInterview(Campuses $campuses, Request $request)
     {
         return view('open_recruitment.panitia.data.V_oprec', [
